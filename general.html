@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>General Hospital Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body data-page="general">
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <a href="index.html" class="side-btn">Overview</a>
+        <a href="general.html" class="side-btn active">General Hospitals</a>
+        <a href="skincare.html" class="side-btn">Skincare Hospitals</a>
+    </div>
+
+    <div class="main">
+
+        <!-- TOP -->
+        <div class="top-row">
+
+            <h1>General Hospital</h1>
+
+            <div class="search-box">
+
+                <input id="site-search"
+                       type="search"
+                       placeholder="Search bar"
+                       oninput="runSearch()">
+
+                <button onclick="runSearch()">🔍</button>
+
+            </div>
+
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-box">
+                <label>Hospital Name</label>
+                <select id="nameFilter" onchange="applyFilters('General Hospital')">
+                    <option value="">All</option>
+                </select>
+            </div>
+
+
+            <button class="export-btn" onclick="exportCSV()">⬇ Export</button>
+        </div>
+
+        <div class="kpi-row">
+            <div class="kpi-card" onclick="showKPIData('totalCount')">
+                <h3>Total</h3>
+                <h2 id="totalCount">0</h2>
+                <p>Total Hospitals</p>
+            </div>
+
+            <div class="kpi-card" onclick="showKPIData('phoneAvailable')">
+                <h3>Phone No available</h3>
+                <h2 id="phoneAvailable">0</h2>
+                <p>Total Phone No</p>
+            </div>
+
+            <div class="kpi-card" onclick="showKPIData('phoneNotAvailable')">
+                <h3>Phone No Not Available</h3>
+                <h2 id="phoneNotAvailable">0</h2>
+                <p>phone No not available</p>
+            </div>
+
+            <div class="kpi-card"> 
+                <h3>Total Area</h3>
+                <h2 id="totalArea">0</h2>
+                <p>Total Area</p>
+            </div>
+        </div>
+        
+        <div class="area-panel">
+            <h2>Area</h2>
+            <div id="areaCards" class="area-grid"></div>
+        </div>
+
+        <div class="export-wrapper">
+            <div class="export-box">
+                <button class="export-main-btn">
+                    Export <i class="fa-solid fa-chevron-up"></i>
+                </button>
+                
+                
+                <div class="export-menu">
+                    
+                    <button onclick="exportWebsiteStylePDF()">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        Download PDF
+                    </button>
+                    
+                    
+                    <button onclick="exportCSV()">
+                        <i class="fa-solid fa-file-csv"></i>
+                        Download CSV
+                    </button>
+                
+                </div>
+            
+            </div>
+
+        <div class="details-box">
+            <h2>Details</h2>
+            <div id="details">
+                <p>Select any hospital to view details</p>
+            </div>
+        </div>
+        </div>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
